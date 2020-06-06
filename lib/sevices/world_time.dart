@@ -7,6 +7,8 @@ class WorldTime {
   String flag; //url to the asset flag icon
   String url; //location url for api endpoint
 
+  WorldTime({ this.location, this.flag, this.url })
+
   void getTime() async {
     //make the request
     Response response =
@@ -29,3 +31,5 @@ class WorldTime {
     time = now.toString();
   }
 }
+
+

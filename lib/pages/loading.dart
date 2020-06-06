@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:world_time_app/sevices/world_time.dart';
 
 class Loading extends StatefulWidget {
   @override
@@ -6,6 +7,12 @@ class Loading extends StatefulWidget {
 }
 
 class _LoadingState extends State<Loading> {
+  
+  void setupWorldTime() {
+    WorldTime instance = WorldTime(
+        location: 'Colombo', flag: 'srilanka.png', url: 'Asia/Colombo');
+  }
+
   int counter = 0;
 
   @override
