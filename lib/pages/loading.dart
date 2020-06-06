@@ -2,23 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:world_time_app/sevices/world_time.dart';
 
 class Loading extends StatefulWidget {
-
   @override
   _LoadingState createState() => _LoadingState();
 }
 
 class _LoadingState extends State<Loading> {
-
-  String time = 'loading';
-  
-  void setupWorldTime() async{
+  void setupWorldTime() async {
     WorldTime instance = WorldTime(
         location: 'Colombo', flag: 'srilanka.png', url: 'Asia/Colombo');
-       await instance.getTime();
-        print(instance.time);
-        setState(() {
-          time=instance.time;
-        });
+    await instance.getTime();
+    Navigator.pushReplacementNamed(context, '/home', arguments: {
+      'location': instance.location,
+      'flag': instance.flag,
+      'time': instance.time
+    });
   }
 
   int counter = 0;
@@ -27,7 +24,6 @@ class _LoadingState extends State<Loading> {
   void initState() {
     super.initState();
     setupWorldTime();
-
   }
 
   @override
@@ -35,7 +31,7 @@ class _LoadingState extends State<Loading> {
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.all(50.0),
-        child: Text(time),
+        child: Text('loading'),
       ),
     );
   }
